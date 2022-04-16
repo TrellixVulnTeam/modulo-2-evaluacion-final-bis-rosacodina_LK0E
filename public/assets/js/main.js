@@ -40,9 +40,12 @@ function fetchApi() {
     });
 }
 
-function handleClicUser(event) {
-  console.log('cacac');
-  console.log(event.currentTarget.id);
+function listenAtUsers() {
+  //function in which I put an AddEventListener to know what user is chosen by the user.
+  const userButton = document.querySelectorAll('.js__user');
+  for (const item of userButton) {
+    item.addEventListener('click', handleClicUser);
+  }
 }
 
 function paintUsers() {
@@ -51,7 +54,7 @@ function paintUsers() {
   //////for to go through the array
   for (const item of users) {
     html += `_____________________________________________`;
-    html += `<li class="js__user id=${item.id}">`;
+    html += `<li class="js__user" id="${item.login.uuid}">`;
     html += `<img src="${item.picture.medium}"</image>`;
     html += `<h2> Nombre: ${item.name.first}  ${item.name.last}</h2>`;
     html += `<h2>Nombre de usuario: ${item.login.username}</h2>`;
@@ -62,11 +65,35 @@ function paintUsers() {
     /////////////In my ul  I brought from my HTML, I introduce the html of the let variable
   }
   usersList.innerHTML = html;
+  listenAtUsers();
 }
 
-const userButton = document.querySelectorAll('.js__user');
-for (const item of userButton) {
-  item.addEventListener('click', handleClicUser);
+const favouriteList = [];
+
+function handleClicUser(event) {
+  console.log(event.currentTarget.id);
+  const idUserSelected = event.currentTarget.id;
+
+  //Here I get what user had been clicked to
+  //Find searches the element in the list, it returns the element
+  //FinIndex searches the position element in the list, it returns the position in which the element is inside the list
+  const userFound = users.find((fav) => {
+    return fav.id === idUserSelected;
+  });
+
+  console.log(idUserSelected);
+
+  const userFoundIndex = favouriteList.findIndex((fav) => {
+    return fav.id === idUserSelected;
+  });
+
+  if (userFoundIndex === -1) {
+    favouriteList.push(userFound);
+  } else {
+    //splice delete an element from an list given the index in which it is, this means the position in which that element is in the list.
+    favouriteList.splice(favouriteFoundIndex, 1);
+  }
+  console.log(favouriteList);
 }
 
 //# sourceMappingURL=main.js.map
