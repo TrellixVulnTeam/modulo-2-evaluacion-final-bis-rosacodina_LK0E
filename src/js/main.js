@@ -7,7 +7,7 @@ const usersList = document.querySelector('.js__usersList');
 
 ////////cuando la pag cargue que se haga una peticion a la api con fecth, relleno un arrya con lo que devuelva la api. funcion que caundo la web cargue que se imprima consola "he cargado" y caundo eso pase meto el fecth y luego lo meto en la lista y después inteno implementar el onloa
 //VARIABLES
-let users = [];
+let users = [{}];
 
 //FUNCTIONS
 
@@ -68,22 +68,39 @@ function paintUsers() {
   listenAtUsers();
 }
 
+//Here I get what user had been clicked to
+//Find searches the element in the list, it returns the element
+//FinIndex searches the position element in the list, it returns the position in which the element is inside the list
+/*const userFound = favouriteList.find((fav) => {
+    return fav.id === idUserSelected;
+  });*/
+
 const favouriteList = [];
 
 function handleClicUser(event) {
   console.log(event.currentTarget.id);
   const idUserSelected = event.currentTarget.id;
+  console.log('Id clicado: ' + idUserSelected);
 
-  //Here I get what user had been clicked to
-  //Find searches the element in the list, it returns the element
-  //FinIndex searches the position element in the list, it returns the position in which the element is inside the list
-  const userFound = users.find((fav) => {
-    return fav.id === idUserSelected;
-  });
+  const idFavouriteList = favouriteList.find(
+    (element) => element === idUserSelected
+  );
+  console.log('Id encontrado en la lista de fav ' + idFavouriteList);
 
-  console.log(idUserSelected);
+  if ((idFavouriteList = undefined)) {
+    favouriteList.push(idUserSelected);
+    //It goes over here in case the  ifFound has an element/value
+  } else {
+    const index = favouriteList.indexOf(idFound);
+    console.log('Indice: ' + index);
+    favouriteList.splice(index, 1);
+  }
 
-  const userFoundIndex = favouriteList.findIndex((fav) => {
+  console.log(favouriteList);
+  console.log('----------------------');
+}
+
+/* const userFoundIndex = favouriteList.findIndex((fav) => {
     return fav.id === idUserSelected;
   });
 
@@ -92,6 +109,4 @@ function handleClicUser(event) {
   } else {
     //splice delete an element from an list given the index in which it is, this means the position in which that element is in the list.
     favouriteList.splice(favouriteFoundIndex, 1);
-  }
-  console.log(favouriteList);
-}
+  }*/
