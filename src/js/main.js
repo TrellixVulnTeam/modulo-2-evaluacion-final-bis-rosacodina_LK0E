@@ -98,23 +98,24 @@ function handleClicUser(event) {
 
   console.log(favouriteList);
   console.log('----------------------');
-}
 
-//I have to put the selected user into the saved list
-//my userClicked is favouriteFound Yanelis
-const userClickedFound = users.find((fav) => {
-  return favouriteList.id === idUserSelected;
-});
+  //I have to put the selected user into the saved list
+  //my userClickedFound is favouriteFound Yanelis
+  const userClickedFound = users.find((fav) => {
+    return favouriteList.id === idUserSelected;
+  });
 
-const userClickedIndex = favouriteList.findIndex((fav) => {
-  return favouriteList.id == idUserSelected;
-});
+  const userClickedIndex = favouriteList.findIndex((fav) => {
+    return favouriteList.id == idUserSelected;
+  });
 
-if (userClickedIndex === -1) {
-  //Here I say that it was not found
-  favouriteList.push(userClickedFound);
-} else {
-  favouriteList != userClickedFound;
+  if (userClickedIndex === -1) {
+    //Here I say that it was not found
+    favouriteList.push(userClickedFound);
+  } else {
+    favouriteList.splice(userClickedFound, 1);
+  }
+  console.log(favouriteList);
 }
 
 /* const userFoundIndex = favouriteList.findIndex((fav) => {
