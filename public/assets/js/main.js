@@ -68,7 +68,7 @@ function paintUsers() {
   listenAtUsers();
 }
 
-//Here I get what user had been clicked to
+//Here I get what user has clicked to
 //Find searches the element in the list, it returns the element
 //FinIndex searches the position element in the list, it returns the position in which the element is inside the list
 /*const userFound = favouriteList.find((fav) => {
@@ -89,7 +89,7 @@ function handleClicUser(event) {
 
   if ((idFavouriteList = undefined)) {
     favouriteList.push(idUserSelected);
-    //It goes over here in case the  ifFound has an element/value
+    //It goes over here in case the ifFound has an element/value
   } else {
     const index = favouriteList.indexOf(idFound);
     console.log('Indice: ' + index);
@@ -98,6 +98,23 @@ function handleClicUser(event) {
 
   console.log(favouriteList);
   console.log('----------------------');
+}
+
+//I have to put the selected user into the saved list
+//my userClicked is favouriteFound Yanelis
+const userClickedFound = users.find((fav) => {
+  return favouriteList.id === idUserSelected;
+});
+
+const userClickedIndex = favouriteList.findIndex((fav) => {
+  return favouriteList.id == idUserSelected;
+});
+
+if (userClickedIndex === -1) {
+  //Here I say that it was not found
+  favouriteList.push(userClickedFound);
+} else {
+  favouriteList != userClickedFound;
 }
 
 /* const userFoundIndex = favouriteList.findIndex((fav) => {
