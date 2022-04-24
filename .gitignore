@@ -1,0 +1,11 @@
+# Dependency
+node_modules/
+
+# Public folder
+Public
+
+# macOS
+*.DS_Store
+
+# Ignore files from set up SASS
+.sass-cache

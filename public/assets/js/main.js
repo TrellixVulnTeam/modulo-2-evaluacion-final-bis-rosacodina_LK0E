@@ -80,18 +80,21 @@ const favouriteList = [];
 function handleClicUser(event) {
   console.log(event.currentTarget.id);
   const idUserSelected = event.currentTarget.id;
+
+  console.log(event.currentTarget);
+
   console.log('Id clicado: ' + idUserSelected);
 
   const idFavouriteList = favouriteList.find(
-    (element) => element === idUserSelected
+    (element) => element.id.name === idUserSelected
   );
   console.log('Id encontrado en la lista de fav ' + idFavouriteList);
 
-  if ((idFavouriteList = undefined)) {
-    favouriteList.push(idUserSelected);
+  if (idFavouriteList == undefined) {
+    favouriteList.push(idFavouriteList);
     //It goes over here in case the ifFound has an element/value
   } else {
-    const index = favouriteList.indexOf(idFound);
+    const index = favouriteList.indexOf(idFavouriteList);
     console.log('Indice: ' + index);
     favouriteList.splice(index, 1);
   }
@@ -100,22 +103,24 @@ function handleClicUser(event) {
   console.log('----------------------');
 }
 
-//I have to put the selected user into the saved list
-//my userClicked is favouriteFound Yanelis
-const userClickedFound = users.find((fav) => {
-  return favouriteList.id === idUserSelected;
-});
+//   //I have to put the selected user into the saved list
+//   //my userClickedFound is favouriteFound Yanelis
+//   const userClickedFound = users.find((fav) => {
+//     return favouriteList.id === idUserSelected;
+//   });
 
-const userClickedIndex = favouriteList.findIndex((fav) => {
-  return favouriteList.id == idUserSelected;
-});
+//   const userClickedIndex = favouriteList.findIndex((fav) => {
+//     return favouriteList.id == idUserSelected;
+//   });
 
-if (userClickedIndex === -1) {
-  //Here I say that it was not found
-  favouriteList.push(userClickedFound);
-} else {
-  favouriteList != userClickedFound;
-}
+//   if (userClickedIndex === -1) {
+//     //Here I say that it was not found
+//     favouriteList.push(userClickedFound);
+//   } else {
+//     favouriteList.splice(userClickedFound, 1);
+//   }
+//   console.log(favouriteList);
+// }
 
 /* const userFoundIndex = favouriteList.findIndex((fav) => {
     return fav.id === idUserSelected;
